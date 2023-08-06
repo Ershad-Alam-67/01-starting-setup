@@ -1,12 +1,17 @@
+import React from "react"
 import ExpenseItem from "./compo/ExpenseItem"
-import Item from "./compo/Item"
+
 function App() {
+  const expenseItems = []
+
+  for (let i = 0; i <= 100; i++) {
+    expenseItems.push(<ExpenseItem key={i} LocationOfExpenditure="Delhi" />)
+  }
+
   return (
     <div>
-      <ExpenseItem></ExpenseItem>
-      <Item name="Food" expense="10"></Item>
-      <Item name="Petrol" expense="100"></Item>
-      <Item name="Movies" expense="200"></Item>
+      <ExpenseItem LocationOfExpenditure="Delhi" /> {/* Single instance */}
+      {expenseItems} {/* Array of ExpenseItem instances */}
     </div>
   )
 }
