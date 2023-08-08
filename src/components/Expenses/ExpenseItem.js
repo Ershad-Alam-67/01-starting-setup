@@ -1,19 +1,23 @@
-import React from 'react';
-
-import ExpenseDate from './ExpenseDate';
-import Card from '../UI/Card';
-import './ExpenseItem.css';
+import React from "react"
+import ExpenseDate from "./ExpenseDate"
+import Card from "../UI/Card"
+import "./ExpenseItem.css"
 
 const ExpenseItem = (props) => {
+  const handleDelete = () => {
+    props.onDelete(props.id)
+  }
+
   return (
-    <Card className='expense-item'>
+    <Card className="expense-item">
       <ExpenseDate date={props.date} />
-      <div className='expense-item__description'>
+      <div className="expense-item__description">
         <h2>{props.title}</h2>
-        <div className='expense-item__price'>${props.amount}</div>
+        <div className="expense-item__price">${props.amount}</div>
       </div>
+      <button onClick={handleDelete}>Delete</button>
     </Card>
-  );
+  )
 }
 
-export default ExpenseItem;
+export default ExpenseItem
