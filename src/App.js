@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useState } from "react"
 
 import Expenses from "./components/Expenses/Expenses"
+import ExpenseTilt from "./components/Expenses/ExpenseTilt"
 
 const App = () => {
-  const expenses = [
+  const expense = [
     {
       id: "0",
       title: "Toilet Paper",
@@ -24,11 +25,14 @@ const App = () => {
       date: new Date(2021, 5, 12),
     },
   ]
+  const [expenses, setExpenses] = useState(expense)
+  function sett(l) {
+    setExpenses(l)
+  }
 
   return (
     <div>
-      <h2>Let's get started!</h2>
-      <Expenses items={expenses} />
+      <ExpenseTilt expenses={expenses} fun={sett} />
     </div>
   )
 }

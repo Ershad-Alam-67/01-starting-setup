@@ -5,3 +5,11 @@
   width: 50rem;
   max-width: 95%;
 }
+#btn {
+  background-color: rgb(133, 8, 250);
+  margin-left: 340px;
+  padding: 15px;
+  border-radius: 20px;
+  color: beige;
+  border-color: beige;
+}
