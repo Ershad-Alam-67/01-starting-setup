@@ -1,5 +1,5 @@
 import "./ExpenseForm.css"
-import React from "react"
+import React, { useState } from "react"
 const ExpenseForm = (props) => {
   let addItem = () => {
     let title = document.getElementById("title").value
@@ -9,29 +9,37 @@ const ExpenseForm = (props) => {
     props.fun(a)
     props.set()
   }
-  function show() {
-    console.log(document.getElementById("title").value)
-    console.log(document.getElementById("amount").value)
-    console.log(document.getElementById("date").value)
+  const [enteredTitle, setEnteredTitle] = useState("")
+  const [enteredAmount, setEnteredAmount] = useState("")
+  const [enteredDate, setEnteredDate] = useState("")
+  function updateTitle() {
+    setEnteredTitle(document.getElementById("title").value)
   }
+  function updateAmount() {
+    setEnteredAmount(document.getElementById("amount").value)
+  }
+  function updateDate() {
+    setEnteredDate(document.getElementById("date").value)
+  }
+
   return (
     <div className="main">
       <div className="inputs">
         <input
           id="title"
-          onChange={show}
+          onChange={updateTitle}
           type="text"
           placeholder="Enter Title"
         ></input>
         <input
           id="amount"
-          onChange={show}
+          onChange={updateAmount}
           type="number"
           placeholder="Enter Amount"
         ></input>
         <input
           id="date"
-          onChange={show}
+          onChange={updateDate}
           type="date"
           placeholder="Enter Date"
         ></input>
