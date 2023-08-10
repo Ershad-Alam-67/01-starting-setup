@@ -5,8 +5,6 @@ import "./Expenses.css"
 import ExpenseForm from "./ExpenseForm"
 
 const Expenses = (props) => {
-  const [itemss, setItem] = useState(props.items)
-
   function handleDeleteExpense(id) {
     const updatedItems = itemss.filter((expense) => expense.id !== id)
     setItem(updatedItems)
@@ -15,7 +13,7 @@ const Expenses = (props) => {
   return (
     <div>
       <Card className="expenses">
-        {itemss.map((expense) => (
+        {props.items.map((expense) => (
           <ExpenseItem
             key={expense.id}
             title={expense.title}
@@ -25,10 +23,6 @@ const Expenses = (props) => {
             onDelete={handleDeleteExpense}
           />
         ))}
-
-        <button id="btn" className="" onClick={props.set}>
-          Add Expense
-        </button>
       </Card>
     </div>
   )

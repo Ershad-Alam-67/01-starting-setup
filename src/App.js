@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 
 import Expenses from "./components/Expenses/Expenses"
-import ExpenseTilt from "./components/Expenses/ExpenseTilt"
+import NewExpense from "./components/Expenses/NewExpense"
 
 const App = () => {
   const expense = [
@@ -25,6 +25,9 @@ const App = () => {
       date: new Date(2021, 5, 12),
     },
   ]
+  function addExpenseHandler(s) {
+    console.log(s)
+  }
   const [expenses, setExpenses] = useState(expense)
   function sett(l) {
     setExpenses(l)
@@ -32,7 +35,11 @@ const App = () => {
 
   return (
     <div>
-      <ExpenseTilt expenses={expenses} fun={sett} />
+      <NewExpense
+        expenses={expenses}
+        fun={sett}
+        onAddExpenseHandler={addExpenseHandler}
+      />
     </div>
   )
 }

@@ -1,14 +1,6 @@
 import "./ExpenseForm.css"
 import React, { useState } from "react"
 const ExpenseForm = (props) => {
-  let addItem = () => {
-    let title = document.getElementById("title").value
-    let amount = document.getElementById("amount").value
-    let date = new Date(document.getElementById("date").value)
-    let a = [...props.expenses, { title: title, amount: amount, date: date }]
-    props.fun(a)
-    props.set()
-  }
   const [enteredTitle, setEnteredTitle] = useState("")
   const [enteredAmount, setEnteredAmount] = useState("")
   const [enteredDate, setEnteredDate] = useState("")
@@ -21,6 +13,24 @@ const ExpenseForm = (props) => {
   function updateDate(event) {
     setEnteredDate(event.target.value)
   }
+  const obj = {
+    title: enteredTitle,
+    amount: enteredAmount,
+    date: new Date(enteredDate),
+    id: Math.random(),
+  }
+
+  function addItem() {
+    props.set((pre) => {
+      const ob = [...pre, obj]
+
+      return ob
+    })
+    props.onAddExpenseHandler(obj)
+    setEnteredAmount("")
+    setEnteredDate("")
+    setEnteredTitle("")
+  }
 
   function fun(eve) {
     eve.preventDefault()
@@ -29,8 +39,6 @@ const ExpenseForm = (props) => {
       amount: enteredAmount,
       date: new Date(enteredDate),
     }
-    addItem()
-    console.log(expenseData)
   }
 
   return (
@@ -40,6 +48,7 @@ const ExpenseForm = (props) => {
           <input
             id="title"
             onChange={updateTitle}
+            value={enteredTitle}
             type="text"
             placeholder="Enter Title"
           ></input>
@@ -47,17 +56,21 @@ const ExpenseForm = (props) => {
             id="amount"
             onChange={updateAmount}
             type="number"
+            value={enteredAmount}
             placeholder="Enter Amount"
           ></input>
           <input
             id="date"
             onChange={updateDate}
             type="date"
+            value={enteredDate}
             placeholder="Enter Date"
           ></input>
         </div>
         <div className="btn">
-          <button type="submit">Submit</button>
+          <button type="submit" onClick={addItem}>
+            Submit
+          </button>
         </div>
       </div>
     </form>
