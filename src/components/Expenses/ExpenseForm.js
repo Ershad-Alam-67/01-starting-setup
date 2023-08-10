@@ -12,42 +12,54 @@ const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("")
   const [enteredAmount, setEnteredAmount] = useState("")
   const [enteredDate, setEnteredDate] = useState("")
-  function updateTitle() {
-    setEnteredTitle(document.getElementById("title").value)
+  function updateTitle(event) {
+    setEnteredTitle(event.target.value)
   }
-  function updateAmount() {
-    setEnteredAmount(document.getElementById("amount").value)
+  function updateAmount(event) {
+    setEnteredAmount(event.target.value)
   }
-  function updateDate() {
-    setEnteredDate(document.getElementById("date").value)
+  function updateDate(event) {
+    setEnteredDate(event.target.value)
+  }
+
+  function fun(eve) {
+    eve.preventDefault()
+    const expenseData = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate),
+    }
+    console.log(expenseData)
   }
 
   return (
-    <div className="main">
-      <div className="inputs">
-        <input
-          id="title"
-          onChange={updateTitle}
-          type="text"
-          placeholder="Enter Title"
-        ></input>
-        <input
-          id="amount"
-          onChange={updateAmount}
-          type="number"
-          placeholder="Enter Amount"
-        ></input>
-        <input
-          id="date"
-          onChange={updateDate}
-          type="date"
-          placeholder="Enter Date"
-        ></input>
+    <form onSubmit={fun}>
+      <div className="main">
+        <div className="inputs">
+          <input
+            id="title"
+            onChange={updateTitle}
+            type="text"
+            placeholder="Enter Title"
+          ></input>
+          <input
+            id="amount"
+            onChange={updateAmount}
+            type="number"
+            placeholder="Enter Amount"
+          ></input>
+          <input
+            id="date"
+            onChange={updateDate}
+            type="date"
+            placeholder="Enter Date"
+          ></input>
+        </div>
+        <div className="btn">
+          <button type="submit">Submit</button>
+        </div>
       </div>
-      <div className="btn">
-        <button onClick={addItem}>Submit</button>
-      </div>
-    </div>
+    </form>
   )
 }
 export default ExpenseForm
