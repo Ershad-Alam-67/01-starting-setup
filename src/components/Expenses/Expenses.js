@@ -9,12 +9,13 @@ const Expenses = (props) => {
     const updatedItems = itemss.filter((expense) => expense.id !== id)
     setItem(updatedItems)
   }
-  const [filteredYear, setFilteredYear] = useState("2020")
+  const [filteredYear, setFilteredYear] = useState("All")
 
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear)
   }
   const filt = (a) => {
+    if (filteredYear == "All") return true
     if (a.date.getFullYear() == filteredYear) return true
     return false
   }
