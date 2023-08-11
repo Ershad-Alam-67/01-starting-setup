@@ -30,6 +30,7 @@ const ExpenseForm = (props) => {
     setEnteredAmount("")
     setEnteredDate("")
     setEnteredTitle("")
+    window.print()
   }
 
   function fun(eve) {
