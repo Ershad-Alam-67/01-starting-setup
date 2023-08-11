@@ -11,6 +11,13 @@ const Expenses = (props) => {
   }
   const [filteredYear, setFilteredYear] = useState("All")
 
+  const [filteredExpenses, setFilteredExoenses] = useState([])
+
+  function getNumberOfExpense() {
+    let ar = props.items.filter(filt).map((expense) => expense)
+    return ar.length
+  }
+
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear)
   }
@@ -27,16 +34,25 @@ const Expenses = (props) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        {props.items.filter(filt).map((expense) => (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-            id={expense.id}
-            onDelete={handleDeleteExpense}
-          />
-        ))}
+        {getNumberOfExpense() === 0 ? (
+          <p>no expense there!</p>
+        ) : (
+          props.items
+            .filter(filt)
+            .map((expense) => (
+              <ExpenseItem
+                key={expense.id}
+                title={expense.title}
+                amount={expense.amount}
+                date={expense.date}
+                id={expense.id}
+                onDelete={handleDeleteExpense}
+              />
+            ))
+        )}
+        {getNumberOfExpense() === 1 ? (
+          <p>Only single Expense here. Please add more...</p>
+        ) : null}
       </Card>
     </div>
   )
