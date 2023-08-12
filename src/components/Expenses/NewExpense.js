@@ -2,6 +2,7 @@ import Expenses from "./Expenses"
 import React, { useState } from "react"
 import ExpenseForm from "./ExpenseForm"
 import "./NewExpense.css"
+import ChartBox from "./Chart/ChartBox"
 
 const NewExpense = (props) => {
   const [formShow, setFormShow] = useState(false)
@@ -22,6 +23,7 @@ const NewExpense = (props) => {
           onSetFormShow={updateFormShow2}
         />
       )}
+
       {!formShow && (
         <div className="btn">
           <button id="addExpense" onClick={updateFormShow}>
@@ -29,6 +31,7 @@ const NewExpense = (props) => {
           </button>
         </div>
       )}
+
       <Expenses items={props.expenses} set={props.fun} />
     </div>
   )

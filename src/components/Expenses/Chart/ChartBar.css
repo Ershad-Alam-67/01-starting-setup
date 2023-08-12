@@ -1,0 +1,37 @@
+.chart-bar {
+  height: 115px;
+  width: 15px;
+  border-radius: 10px;
+  padding: 0px;
+
+  background-color: black;
+}
+.chart-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+  margin-left: 28px;
+}
+p {
+  margin-top: 5px;
+  padding-top: 3px;
+}
+.chart-meter1 {
+  height: 90px;
+  width: 15px;
+  background-color: black;
+
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 90px;
+}
+.chart-meter2 {
+  width: 15px;
+  background-color: burlywood;
+
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 30px;
+}

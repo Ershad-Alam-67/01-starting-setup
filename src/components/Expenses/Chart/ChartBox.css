@@ -1,0 +1,10 @@
+.chart-box {
+  background-color: blueviolet;
+  border-radius: 25px;
+  height: 180px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 40px;
+}

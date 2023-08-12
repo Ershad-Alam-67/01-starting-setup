@@ -3,6 +3,7 @@ import ExpenseItem from "./ExpenseItem"
 import Card from "../UI/Card"
 import "./Expenses.css"
 import ExpensesFilter from "./ExpensesFilter.js"
+import ChartBox from "./Chart/ChartBox"
 
 const Expenses = (props) => {
   let im = "./hero.png"
@@ -27,7 +28,10 @@ const Expenses = (props) => {
     if (a.date.getFullYear() == filteredYear) return true
     return false
   }
-
+  const filteredExpensesList = props.items
+    .filter(filt)
+    .map((expense) => expense)
+  console.log("he", filteredExpensesList)
   return (
     <div>
       <Card className="expenses">
@@ -35,6 +39,7 @@ const Expenses = (props) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
+        <ChartBox getList={filteredExpensesList} />
         {getNumberOfExpense() === 0 ? (
           <p>no expense there!</p>
         ) : (

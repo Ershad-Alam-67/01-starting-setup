@@ -2,6 +2,7 @@ import React, { useState } from "react"
 
 import Expenses from "./components/Expenses/Expenses"
 import NewExpense from "./components/Expenses/NewExpense"
+import ChartBar from "./components/Expenses/Chart/ChartBar"
 
 const App = () => {
   const expense = [
