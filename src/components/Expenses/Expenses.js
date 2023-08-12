@@ -5,6 +5,7 @@ import "./Expenses.css"
 import ExpensesFilter from "./ExpensesFilter.js"
 
 const Expenses = (props) => {
+  let im = "./hero.png"
   function handleDeleteExpense(id) {
     const updatedItems = itemss.filter((expense) => expense.id !== id)
     setItem(updatedItems)

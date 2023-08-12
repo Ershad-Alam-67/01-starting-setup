@@ -30,6 +30,7 @@ const ExpenseForm = (props) => {
     setEnteredAmount("")
     setEnteredDate("")
     setEnteredTitle("")
+    props.onSetFormShow()
   }
 
   function fun(eve) {
@@ -68,8 +69,11 @@ const ExpenseForm = (props) => {
           ></input>
         </div>
         <div className="btn">
-          <button type="submit" onClick={addItem}>
-            Submit
+          <button id="cancel" className="btns" onClick={props.onSetFormShow}>
+            Cancel
+          </button>
+          <button id="submit" className="btns" type="submit" onClick={addItem}>
+            Add Item
           </button>
         </div>
       </div>
